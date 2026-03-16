@@ -36,7 +36,7 @@ This SRS follows IEEE 830 standard conventions. All requirements are prioritized
 
 ### 1.4 Product Scope
 
-The Online E-Learning Platform allows Students to register, browse courses, enroll in courses, and track enrollment status. Instructors can manage courses and monitor enrollments. The system aims to streamline online education delivery and course management.
+The Online E-Learning Platform allows Students to register, search courses, enroll in courses, and view enrollment history. Instructors can manage courses and monitor enrollments. The system aims to streamline online education delivery and course management.
 
 ### 1.5 References
 
@@ -64,7 +64,7 @@ flowchart TB
 
 | # | External Entity | Description |
 |---|-----------------|-------------|
-| 01 | Student (User) | End-users who register, browse courses, place enrollments, and track their enrollment status |
+| 01 | Student (User) | End-users who register, search courses, place enrollments, and view enrollment history |
 | 02 | Instructor | Educators who authenticate, manage courses (create/update), and monitor enrollments associated with their courses |
 
 ## Main Data Flows
@@ -96,12 +96,10 @@ flowchart LR
     subgraph "Online E-Learning Platform"
         UC01["UC-01: Register Account"]
         UC02["UC-02: Log In"]
-        UC03["UC-03: Browse Course Catalog"]
         UC04["UC-04: Search Courses"]
         UC05["UC-05: View Course Details"]
         UC06["UC-06: Place Enrollment"]
         UC07["UC-07: View Enrollment History"]
-        UC08["UC-08: Track Enrollment Status"]
         UC09["UC-09: Create Course"]
         UC10["UC-10: Update Course"]
         UC11["UC-11: View My Courses"]
@@ -110,12 +108,10 @@ flowchart LR
 
     S --- UC01
     S --- UC02
-    S --- UC03
     S --- UC04
     S --- UC05
     S --- UC06
     S --- UC07
-    S --- UC08
 
     I --- UC02
     I --- UC09
@@ -128,7 +124,7 @@ flowchart LR
 
 | # | Actor | Description |
 |---|-------|-------------|
-| 01 | Student (User) | A registered end-user who can browse courses, enroll in courses, and track enrollment status |
+| 01 | Student (User) | A registered end-user who can search courses, enroll in courses, and view enrollment history |
 | 02 | Instructor | An educator who manages courses and monitors student enrollments in their courses |
 
 ## Use Cases Table
@@ -137,12 +133,10 @@ flowchart LR
 |---|----------|--------|-------------|
 | UC-01 | Register Account | Student | Student creates a new account by providing registration details |
 | UC-02 | Log In | Student, Instructor | User authenticates into the system using their credentials |
-| UC-03 | Browse Course Catalog | Student | Student views the full list of available courses in the catalog |
 | UC-04 | Search Courses | Student | Student searches for specific courses using keywords or filters |
 | UC-05 | View Course Details | Student | Student views detailed information about a course including title, description, price, and instructor profile |
 | UC-06 | Place Enrollment | Student | Student selects one or multiple courses and places an enrollment |
-| UC-07 | View Enrollment History | Student | Student views the history of all their past and current enrollments |
-| UC-08 | Track Enrollment Status | Student | Student checks the current status (Pending, Confirmed, Canceled) of a specific enrollment |
+| UC-07 | View Enrollment History | Student | Student views the history of all their past and current enrollments and tracks their enrollment status |
 | UC-09 | Create Course | Instructor | Instructor creates a new course with title, description, and price |
 | UC-10 | Update Course | Instructor | Instructor modifies existing course details such as price or description |
 | UC-11 | View My Courses | Instructor | Instructor views the list of all courses they are currently teaching |
@@ -192,7 +186,7 @@ erDiagram
 
 | # | Entity | Description |
 |---|--------|-------------|
-| 01 | USER | Represents a student who registers, logs in, browses courses, and places enrollments |
+| 01 | USER | Represents a student who registers, logs in, searches courses, and places enrollments |
 | 02 | INSTRUCTOR | Represents an educator who creates and manages courses and monitors enrollments |
 | 03 | COURSE | Represents a learning course with title, description, price, and an assigned instructor |
 | 04 | ENROLLMENT | Represents an enrollment placed by a single user; has a status (Pending, Confirmed, Canceled) |
@@ -213,7 +207,7 @@ erDiagram
 
 | ID | Rule Definition | Use Cases |
 |----|-----------------|-----------|
-| BR-01 | Users (Students) must register and log in before accessing any system features (browsing, searching, enrolling). | UC-01, UC-02 |
+| BR-01 | Users (Students) must register and log in before accessing any system features (searching, enrolling). | UC-01, UC-02 |
 | BR-02 | Instructors must authenticate to the system before managing courses or viewing enrollments. | UC-02 |
 | BR-03 | Each course must be managed by exactly one instructor. An instructor can teach multiple courses. | UC-09, UC-10, UC-11 |
 | BR-04 | Each enrollment is placed by a single user and can contain one or multiple courses. A course can appear in multiple different enrollments. | UC-06, UC-07 |
