@@ -217,10 +217,10 @@ erDiagram
 | BR-02 | Instructors must authenticate to the system before managing courses or viewing enrollments. | UC-02 |
 | BR-03 | Each course must be managed by exactly one instructor. An instructor can teach multiple courses. | UC-09, UC-10, UC-11 |
 | BR-04 | Each enrollment is placed by a single user and can contain one or multiple courses. A course can appear in multiple different enrollments. | UC-06, UC-07 |
-| BR-05 | Every enrollment must have a trackable status with valid values: **Pending**, **Confirmed**, or **Canceled**. | UC-06, UC-08 |
+| BR-05 | Every enrollment must have a trackable status with valid values: **Pending**, **Confirmed**, or **Canceled**. | UC-06 |
 | BR-06 | A course must have a title, description, price, and an associated instructor profile visible to students. | UC-05, UC-09, UC-10 |
 | BR-07 | Instructors can only view and manage courses that they themselves are teaching; they can only view enrollments associated with their own courses. | UC-11, UC-12 |
-| BR-08 | Students can view their own enrollment history and track the status of their own enrollments only. | UC-07, UC-08 |
+| BR-08 | Students can view their own enrollment history and track the status of their own enrollments only. | UC-07 |
 
 ---
 
