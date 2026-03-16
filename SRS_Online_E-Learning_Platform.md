@@ -96,28 +96,28 @@ flowchart LR
     subgraph "Online E-Learning Platform"
         UC01["UC-01: Register Account"]
         UC02["UC-02: Log In"]
-        UC04["UC-04: Search Courses"]
-        UC05["UC-05: View Course Details"]
-        UC06["UC-06: Place Enrollment"]
-        UC07["UC-07: View Enrollment History"]
-        UC09["UC-09: Create Course"]
-        UC10["UC-10: Update Course"]
-        UC11["UC-11: View My Courses"]
-        UC12["UC-12: View Course Enrollments"]
+        UC03["UC-03: Search Courses"]
+        UC04["UC-04: View Course Details"]
+        UC05["UC-05: Place Enrollment"]
+        UC06["UC-06: View Enrollment History"]
+        UC07["UC-07: Create Course"]
+        UC08["UC-08: Update Course"]
+        UC09["UC-09: View My Courses"]
+        UC10["UC-10: View Course Enrollments"]
     end
 
     S --- UC01
     S --- UC02
+    S --- UC03
     S --- UC04
     S --- UC05
     S --- UC06
-    S --- UC07
 
     I --- UC02
+    I --- UC07
+    I --- UC08
     I --- UC09
     I --- UC10
-    I --- UC11
-    I --- UC12
 ```
 
 ## Actors Table
@@ -133,14 +133,14 @@ flowchart LR
 |---|----------|--------|-------------|
 | UC-01 | Register Account | Student | Student creates a new account by providing registration details |
 | UC-02 | Log In | Student, Instructor | User authenticates into the system using their credentials |
-| UC-04 | Search Courses | Student | Student searches for specific courses using keywords or filters |
-| UC-05 | View Course Details | Student | Student views detailed information about a course including title, description, price, and instructor profile |
-| UC-06 | Place Enrollment | Student | Student selects one or multiple courses and places an enrollment |
-| UC-07 | View Enrollment History | Student | Student views the history of all their past and current enrollments and tracks their enrollment status |
-| UC-09 | Create Course | Instructor | Instructor creates a new course with title, description, and price |
-| UC-10 | Update Course | Instructor | Instructor modifies existing course details such as price or description |
-| UC-11 | View My Courses | Instructor | Instructor views the list of all courses they are currently teaching |
-| UC-12 | View Course Enrollments | Instructor | Instructor views the enrollments associated with their courses to see which students have registered |
+| UC-03 | Search Courses | Student | Student searches for specific courses using keywords or filters |
+| UC-04 | View Course Details | Student | Student views detailed information about a course including title, description, price, and instructor profile |
+| UC-05 | Place Enrollment | Student | Student selects one or multiple courses and places an enrollment |
+| UC-06 | View Enrollment History | Student | Student views the history of all their past and current enrollments and tracks their enrollment status |
+| UC-07 | Create Course | Instructor | Instructor creates a new course with title, description, and price |
+| UC-08 | Update Course | Instructor | Instructor modifies existing course details such as price or description |
+| UC-09 | View My Courses | Instructor | Instructor views the list of all courses they are currently teaching |
+| UC-10 | View Course Enrollments | Instructor | Instructor views the enrollments associated with their courses to see which students have registered |
 
 ---
 
@@ -209,12 +209,12 @@ erDiagram
 |----|-----------------|-----------|
 | BR-01 | Users (Students) must register and log in before accessing any system features (searching, enrolling). | UC-01, UC-02 |
 | BR-02 | Instructors must authenticate to the system before managing courses or viewing enrollments. | UC-02 |
-| BR-03 | Each course must be managed by exactly one instructor. An instructor can teach multiple courses. | UC-09, UC-10, UC-11 |
-| BR-04 | Each enrollment is placed by a single user and can contain one or multiple courses. A course can appear in multiple different enrollments. | UC-06, UC-07 |
-| BR-05 | Every enrollment must have a trackable status with valid values: **Pending**, **Confirmed**, or **Canceled**. | UC-06 |
-| BR-06 | A course must have a title, description, price, and an associated instructor profile visible to students. | UC-05, UC-09, UC-10 |
-| BR-07 | Instructors can only view and manage courses that they themselves are teaching; they can only view enrollments associated with their own courses. | UC-11, UC-12 |
-| BR-08 | Students can view their own enrollment history and track the status of their own enrollments only. | UC-07 |
+| BR-03 | Each course must be managed by exactly one instructor. An instructor can teach multiple courses. | UC-07, UC-08, UC-09 |
+| BR-04 | Each enrollment is placed by a single user and can contain one or multiple courses. A course can appear in multiple different enrollments. | UC-05, UC-06 |
+| BR-05 | Every enrollment must have a trackable status with valid values: **Pending**, **Confirmed**, or **Canceled**. | UC-05 |
+| BR-06 | A course must have a title, description, price, and an associated instructor profile visible to students. | UC-04, UC-07, UC-08 |
+| BR-07 | Instructors can only view and manage courses that they themselves are teaching; they can only view enrollments associated with their own courses. | UC-09, UC-10 |
+| BR-08 | Students can view their own enrollment history and track the status of their own enrollments only. | UC-06 |
 
 ---
 
